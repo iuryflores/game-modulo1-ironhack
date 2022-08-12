@@ -9,7 +9,7 @@ class Component {
 
   draw() {
     const ctx = myGame.context;
-  ctx.drawImage(this.personagemImg, this.x, this.y, this.width, this.height);
+  ctx.drawImage(personagemImg, this.x, this.y, this.width, this.height);
 //ctx.fillStyle = 'black'
     //ctx.fillRect(this.x,this.y,this.width,this.height)
   }
@@ -57,7 +57,7 @@ class Obstacle {
   }
   drawObst() {
     const ctx = myGame.context;
-    ctx.drawImage(this.vilanImg, this.x, this.y, this.width, this.height);
+    ctx.drawImage(vilanImg, this.x, this.y, this.width, this.height);
     //ctx.fillStyle = 'red'
     //ctx.fillRect(this.x,this.y,this.width,this.height)
   }

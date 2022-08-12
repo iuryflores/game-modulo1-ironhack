@@ -1,3 +1,10 @@
+//definindo imgs dos envolvidos
+const personagemImg = new Image();
+personagemImg.src = "../src/imgs/snow.png";
+
+const vilanImg = new Image();
+vilanImg.src = "../src/imgs/ww.png";
+
 const myGame = {
   canvas: document.querySelector("canvas"),
   frames: 0,
@@ -18,12 +25,7 @@ const myGame = {
   },
 };
 
-//definindo imgs dos envolvidos
-const personagemImg = new Image();
-personagemImg.src = "./src/imgs/snow.png";
 
-const vilanImg = new Image();
-vilanImg.src = "./src/imgs/ww.png";
 
 
 function startGame() {
