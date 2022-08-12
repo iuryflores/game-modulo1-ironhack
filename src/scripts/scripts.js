@@ -20,10 +20,10 @@ const myGame = {
 
 //definindo imgs dos envolvidos
 const personagemImg = new Image();
-personagemImg.src = "/src/imgs/snow.png";
+personagemImg.src = "./src/imgs/snow.png";
 
 const vilanImg = new Image();
-vilanImg.src = "/src/imgs/ww.png";
+vilanImg.src = "./src/imgs/ww.png";
 
 
 function startGame() {
