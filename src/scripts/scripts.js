@@ -1,9 +1,9 @@
 //definindo imgs dos envolvidos
 const personagemImg = new Image();
-personagemImg.src = "/src/imgs/snow.png";
+personagemImg.src = "./src/imgs/snow.png";
 
 const vilanImg = new Image();
-vilanImg.src = "/src/imgs/ww.png";
+vilanImg.src = "./src/imgs/ww.png";
 
 const myGame = {
   canvas: document.querySelector("canvas"),
@@ -30,7 +30,7 @@ const myGame = {
     const points = Math.floor(this.frames / this.level);
     this.context.font = "20px serif";
     this.context.fillStyle = "red";
-    this.context.fillText(`Score: ${points}`, 600, 50);
+    this.context.fillText(`Score: ${points}`, 550, 50);
   },
   lives: function () {},
 };
