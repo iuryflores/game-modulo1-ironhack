@@ -1,9 +1,9 @@
 //definindo imgs dos envolvidos
 const personagemImg = new Image();
-personagemImg.src = "game-modulo1-ironhack/src/imgs/snow.png";
+personagemImg.src = "/src/imgs/snow.png";
 
 const vilanImg = new Image();
-vilanImg.src = "game-modulo1-ironhack/src/imgs/ww.png";
+vilanImg.src = "/src/imgs/ww.png";
 
 const myGame = {
   canvas: document.querySelector("canvas"),
