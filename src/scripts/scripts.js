@@ -13,6 +13,8 @@ const myGame = {
   player: null,
   level: 1,
   speed: 1,
+  score: 0,
+  lives: 5,
   start: function () {
     this.player = new Component(120, 100, 80, 110, personagemImg);
 
@@ -26,17 +28,17 @@ const myGame = {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   },
 
-  score: function () {
-    const points = Math.floor(this.frames / this.level);
+  updateScore: function () {
+    if (this.frames % (10 * this.level) === 0) {
+      this.score += 1;
+    }
     this.context.font = "20px serif";
     this.context.fillStyle = "red";
-    this.context.fillText(`Score: ${points}`, 550, 50);
+    this.context.fillText(`Score: ${this.score}`, 550, 50);
   },
-  lives: function () {},
 };
 
 function startGame() {
-
   //limpando a tela
   myGame.clear();
 
@@ -49,7 +51,6 @@ function startGame() {
   //definindo indicadores do inicio do jogo
   myGame.frames += 1;
 
-
   //checando se o deu gameOver
   checkGameOver();
   if (!myGame.stop) {
@@ -57,26 +58,30 @@ function startGame() {
   }
 
   //mostrando score
-  myGame.score();
+  myGame.updateScore();
 
   //fazendo o jogo ficar mais dificil
   if (myGame.frames % 600 === 0) {
     myGame.speed += 0.5;
-    
-    console.log('Speed:',myGame.speed)
-    console.log('Harder:',myGame.level);
-    console.log('Frame:',myGame.frames)
-  }
 
+    console.log("Speed:", myGame.speed);
+    console.log("Harder:", myGame.level);
+    console.log("Frame:", myGame.frames);
+  }
 }
 
 function checkGameOver() {
-  const crashed = myGame.obstacles.some((obstacle) =>
-    myGame.player.crashWith(obstacle)
-  );
+  const crashed = myGame.obstacles.some((obstacle, index) => {
+    let check = myGame.player.crashWith(obstacle);
+    if (check) {
+      myGame.obstacles.splice(index, 1);
+    }
+    return check;
+  });
   if (crashed) {
+    myGame.lives -= 1;
     if (myGame.lives === 0) {
-      alert("bati");
+      alert("Morri");
       myGame.stop = true;
     } else {
       myGame.stop = false;

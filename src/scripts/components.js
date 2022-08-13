@@ -67,13 +67,13 @@ class Obstacle {
   updateObstacle() {
     if (myGame.frames % 200 === 0) {
       let posY = Math.floor(Math.random() * myGame.canvas.height);
-      myGame.obstacles.push(new Obstacle(myGame.canvas.width, posY));
+      myGame.obstacles.push(new Obstacle(myGame.canvas.width, posY, vilanImg));
     }
     for (obstacle of myGame.obstacles) {
       obstacle.x -= myGame.speed;
       obstacle.drawObst();
     }
-    console.log(myGame.obstacles)
+   
   }
 }
 let obstacle = new Obstacle();
