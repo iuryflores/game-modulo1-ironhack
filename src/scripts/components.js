@@ -9,8 +9,8 @@ class Component {
 
   draw() {
     const ctx = myGame.context;
-  ctx.drawImage(personagemImg, this.x, this.y, this.width, this.height);
-//ctx.fillStyle = 'black'
+    ctx.drawImage(personagemImg, this.x, this.y, this.width, this.height);
+    //ctx.fillStyle = 'black'
     //ctx.fillRect(this.x,this.y,this.width,this.height)
   }
 
@@ -35,6 +35,7 @@ class Component {
     );
   }
 }
+
 class Obstacle {
   constructor(x, y, vilanImg) {
     this.x = x;
@@ -42,6 +43,7 @@ class Obstacle {
     this.width = 100;
     this.height = 150;
     this.vilanImg = vilanImg;
+ 
   }
   top() {
     return this.y;
@@ -63,15 +65,15 @@ class Obstacle {
   }
 
   updateObstacle() {
-    if (myGame.frames % 240 === 0) {
+    if (myGame.frames % 200 === 0) {
       let posY = Math.floor(Math.random() * myGame.canvas.height);
       myGame.obstacles.push(new Obstacle(myGame.canvas.width, posY));
     }
     for (obstacle of myGame.obstacles) {
-      obstacle.x -= 1;
-
+      obstacle.x -= myGame.speed;
       obstacle.drawObst();
     }
+    console.log(myGame.obstacles)
   }
 }
 let obstacle = new Obstacle();
