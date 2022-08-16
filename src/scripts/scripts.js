@@ -36,6 +36,12 @@ const myGame = {
     this.context.fillStyle = "red";
     this.context.fillText(`Score: ${this.score}`, 550, 50);
   },
+  showLives: function (){
+    
+    this.context.font = '20px serif';
+    this.context.fillStyle = 'blue';
+    this.context.fillText(`Lives: ${this.lives}`, 100, 50)
+  }
 };
 
 function startGame() {
@@ -59,6 +65,7 @@ function startGame() {
 
   //mostrando score
   myGame.updateScore();
+  myGame.showLives()
 
   //fazendo o jogo ficar mais dificil
   if (myGame.frames % 600 === 0) {
