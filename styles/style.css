@@ -2,4 +2,16 @@
     border: 2px solid red;
     width: 700px;
     height: 500px;
+    margin: 0 auto;
+ 
+    
+
+}/*
+.game-intro {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    background-color: red;
+    padding: 10px;
+    z-index: 1;
 }

@@ -15,6 +15,7 @@ const myGame = {
   speed: 1,
   score: 0,
   lives: 5,
+  powers: [],
   start: function () {
     this.player = new Component(120, 100, 80, 110, personagemImg);
 
@@ -29,19 +30,29 @@ const myGame = {
   },
 
   updateScore: function () {
-    if (this.frames % (10 * this.level) === 0) {
+    if (this.frames % (3 * this.level) === 0) {
       this.score += 1;
     }
     this.context.font = "20px serif";
     this.context.fillStyle = "red";
     this.context.fillText(`Score: ${this.score}`, 550, 50);
   },
-  showLives: function (){
-    
-    this.context.font = '20px serif';
-    this.context.fillStyle = 'blue';
-    this.context.fillText(`Lives: ${this.lives}`, 100, 50)
-  }
+  showLives: function () {
+    let posFirst = 100;
+    this.context.font = "20px serif";
+    this.context.fillText(`Lives: `, 50, 50);
+    for (let i = 0; i < this.lives; i++) {
+      this.context.font = "30px serif";
+      this.context.fillStyle = "blue";
+      this.context.fillText(`❤`, posFirst, 50);
+      posFirst += 30;
+    }
+    if(this.lives === 5){
+      this.context.font = '10px serif';
+      this.context.fillStyle = 'red'
+      this.context.fillText(`max`, 250,50)
+    }
+  },
 };
 
 function startGame() {
@@ -53,6 +64,7 @@ function startGame() {
 
   //desenhado/atualizando os vilões
   obstacle.updateObstacle();
+  power.updateLives();
 
   //definindo indicadores do inicio do jogo
   myGame.frames += 1;
@@ -65,15 +77,11 @@ function startGame() {
 
   //mostrando score
   myGame.updateScore();
-  myGame.showLives()
-
+  myGame.showLives();
+  console.log(myGame.frames);
   //fazendo o jogo ficar mais dificil
   if (myGame.frames % 600 === 0) {
     myGame.speed += 0.5;
-
-    console.log("Speed:", myGame.speed);
-    console.log("Harder:", myGame.level);
-    console.log("Frame:", myGame.frames);
   }
 }
 
@@ -85,6 +93,13 @@ function checkGameOver() {
     }
     return check;
   });
+  const fillPower = myGame.powers.some((power, index) => {
+    let getPower = myGame.player.crashWithLives(power);
+    if (getPower) {
+      myGame.powers.splice(index, 1);
+    }
+    return getPower;
+  });
   if (crashed) {
     myGame.lives -= 1;
     if (myGame.lives === 0) {
@@ -92,6 +107,11 @@ function checkGameOver() {
       myGame.stop = true;
     } else {
       myGame.stop = false;
+    }
+  }
+  if (fillPower) {
+    if (myGame.lives < 5) {
+      myGame.lives += 1;
     }
   }
 }

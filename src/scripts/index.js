@@ -1,6 +1,6 @@
 document.addEventListener("keydown", (e) => {
   const key = e.code;
-  let jump = 10;
+  let jump = 50;
   switch (key) {
     case "ArrowLeft": // left arrow
       myGame.player.x -= jump;
