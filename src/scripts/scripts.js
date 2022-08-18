@@ -17,7 +17,7 @@ const myGame = {
   lives: 5,
   powers: [],
   start: function () {
-    this.player = new Component(120, 100, 80, 110, personagemImg);
+    this.player = new Component(120, 100, 80, 100, personagemImg);
 
     this.canvas.width = 700;
     this.canvas.height = 500;
@@ -47,10 +47,10 @@ const myGame = {
       this.context.fillText(`❤`, posFirst, 50);
       posFirst += 30;
     }
-    if(this.lives === 5){
-      this.context.font = '10px serif';
-      this.context.fillStyle = 'red'
-      this.context.fillText(`max`, 250,50)
+    if (this.lives === 5) {
+      this.context.font = "10px serif";
+      this.context.fillStyle = "red";
+      this.context.fillText(`max`, 250, 50);
     }
   },
 };
@@ -74,11 +74,11 @@ function startGame() {
   if (!myGame.stop) {
     requestAnimationFrame(startGame);
   }
-
+  console.log('posX',myGame.player.x, 'posY',myGame.player.y);
   //mostrando score
   myGame.updateScore();
   myGame.showLives();
-  console.log(myGame.frames);
+
   //fazendo o jogo ficar mais dificil
   if (myGame.frames % 600 === 0) {
     myGame.speed += 0.5;
