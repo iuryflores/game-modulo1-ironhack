@@ -16,12 +16,16 @@ const myGame = {
   score: 0,
   lives: 5,
   powers: [],
+  audio: new Audio("theme80.mp3"),
+
   start: function () {
     this.player = new Component(120, 100, 80, 100, personagemImg);
 
     this.canvas.width = 700;
     this.canvas.height = 500;
     this.context = this.canvas.getContext("2d");
+
+    this.audio.play();
 
     startGame();
   },
@@ -74,7 +78,7 @@ function startGame() {
   if (!myGame.stop) {
     requestAnimationFrame(startGame);
   }
-  console.log('posX',myGame.player.x, 'posY',myGame.player.y);
+
   //mostrando score
   myGame.updateScore();
   myGame.showLives();
@@ -103,8 +107,11 @@ function checkGameOver() {
   if (crashed) {
     myGame.lives -= 1;
     if (myGame.lives === 0) {
-      alert("Morri");
+      
       myGame.stop = true;
+      myGame.audio.pause();
+      
+      alert("Morri");
     } else {
       myGame.stop = false;
     }

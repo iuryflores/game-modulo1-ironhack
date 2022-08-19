@@ -1,9 +1,10 @@
 #game-board {
-    border: 2px solid red;
+    border: 2px solid rgb(0, 225, 255);
+    border-radius: 10px;
     width: 700px;
     height: 500px;
     margin: 0 auto;
- 
+ background: url('/src/imgs/back.gif');
     
 
 }/*
