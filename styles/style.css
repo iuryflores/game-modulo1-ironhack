@@ -23,7 +23,7 @@ body {
   width: 800px;
   height: 500px;
   margin: 0 auto;
-  background: url("/src/imgs/back.gif");
+  background: url("./src/imgs/back.gif");
   background-size: cover;
 }
 
