@@ -5,6 +5,8 @@ class Component {
     this.width = width;
     this.height = height;
     this.personagemImg = personagemImg;
+    const livesImg = new Image();
+    livesImg.src = "/src/imgs/live.png";
   }
 
   draw() {
@@ -15,7 +17,8 @@ class Component {
     const ctx = myGame.context;
     ctx.font = "30px serif";
     ctx.fillStyle = "blue";
-    ctx.fillText(`❤`, this.x, this.y);
+    ctx.drawImage(livesImg, this.x, this.y, 30, 20);
+    /*ctx.fillText(`❤`, this.x, this.y);*/
   }
 
   top() {
@@ -48,10 +51,8 @@ class Component {
   }
   updateLives() {
     if (myGame.frames % 1200 === 0) {
-      let posY = Math.floor(Math.random() * myGame.canvas.height);
-      myGame.powers.push(
-        new Component(myGame.canvas.width, posY, 20, 20, "blue")
-      );
+      let posY = Math.floor(Math.random() * myGame.canvas.height + 100);
+      myGame.powers.push(new Component(myGame.canvas.width, posY, 20, 20));
     }
     for (power of myGame.powers) {
       power.x -= myGame.speed;
@@ -88,29 +89,47 @@ class Obstacle {
   updateObstacle() {
     if (myGame.frames < 600) {
       if (myGame.frames % 300 === 0) {
-        let posY = Math.floor(Math.random() * myGame.canvas.height);
+        let posY = Math.floor(Math.random() * myGame.canvas.height - 150);
+        if (posY < 0) {
+          posY = 0;
+        } else if (posY >= myGame.canvas.height) {
+          posY = myGame.canvas.height - 150;
+        }
         myGame.obstacles.push(
-          new Obstacle(myGame.canvas.width, posY, vilanImg)
+          new Obstacle(myGame.canvas.width + 50, posY, vilanImg)
         );
       }
-    } else if (myGame.frames > 600 && myGame.frames < 2000) {
+    }
+    if (myGame.frames > 600 && myGame.frames < 2000) {
       if (myGame.frames % 200 === 0) {
-        let posY = Math.floor(Math.random() * myGame.canvas.height);
+        let posY = Math.floor(Math.random() * (myGame.canvas.height - 150));
+        if (posY < 0) {
+          posY = 0;
+        } else if (posY >= myGame.canvas.height) {
+          posY = myGame.canvas.height - 150;
+        }
         myGame.obstacles.push(
-          new Obstacle(myGame.canvas.width, posY, vilanImg)
+          new Obstacle(myGame.canvas.width + 50, posY, vilanImg)
         );
       }
-    } else {
-      if (myGame.frames % 100 === 0) {
-        let posY = Math.floor(Math.random() * myGame.canvas.height);
+    }
+    if (myGame.frames > 2000) {
+      if (myGame.frames % 150 === 0) {
+        let posY = Math.floor(Math.random() * (myGame.canvas.height - 150));
+        if (posY < 0) {
+          posY = 0;
+        } else if (posY >= myGame.canvas.height) {
+          posY = myGame.canvas.height - 150;
+        }
         myGame.obstacles.push(
-          new Obstacle(myGame.canvas.width, posY, vilanImg)
+          new Obstacle(myGame.canvas.width + 50, posY, vilanImg)
         );
       }
     }
     for (obstacle of myGame.obstacles) {
       obstacle.x -= myGame.speed;
       obstacle.drawObst();
+      
     }
   }
 }

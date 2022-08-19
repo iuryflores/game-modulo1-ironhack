@@ -5,6 +5,9 @@ personagemImg.src = "./src/imgs/snow.png";
 const vilanImg = new Image();
 vilanImg.src = "./src/imgs/ww.png";
 
+const livesImg = new Image();
+livesImg.src = "/src/imgs/live.png";
+
 const myGame = {
   canvas: document.querySelector("canvas"),
   frames: 0,
@@ -19,13 +22,13 @@ const myGame = {
   audio: new Audio("theme80.mp3"),
 
   start: function () {
-    this.player = new Component(120, 100, 80, 100, personagemImg);
+    this.player = new Component(120, 100, 100, 120, personagemImg);
 
-    this.canvas.width = 700;
+    this.canvas.width = 800;
     this.canvas.height = 500;
     this.context = this.canvas.getContext("2d");
-
     this.audio.play();
+    this.audio.loop = true;
 
     startGame();
   },
@@ -37,24 +40,26 @@ const myGame = {
     if (this.frames % (3 * this.level) === 0) {
       this.score += 1;
     }
-    this.context.font = "20px serif";
-    this.context.fillStyle = "red";
-    this.context.fillText(`Score: ${this.score}`, 550, 50);
+
+    this.context.font = "20px GameFont";
+    this.context.fillStyle = "black";
+    this.context.fillText(`Score: ${this.score}`, 650, 50);
   },
   showLives: function () {
     let posFirst = 100;
-    this.context.font = "20px serif";
-    this.context.fillText(`Lives: `, 50, 50);
+    this.context.font = "20px GameFont";
+    this.context.fillText(`Lives: `, 20, 50);
     for (let i = 0; i < this.lives; i++) {
       this.context.font = "30px serif";
-      this.context.fillStyle = "blue";
-      this.context.fillText(`❤`, posFirst, 50);
-      posFirst += 30;
+      this.context.fillStyle = "black";
+      this.context.drawImage(livesImg, posFirst, 20, 40, 30);
+      /*this.context.fillText(`❤`, posFirst, 50);*/
+      posFirst += 40;
     }
     if (this.lives === 5) {
       this.context.font = "10px serif";
-      this.context.fillStyle = "red";
-      this.context.fillText(`max`, 250, 50);
+      this.context.fillStyle = "black";
+      this.context.fillText(`max`, 300, 40);
     }
   },
 };
@@ -62,9 +67,11 @@ const myGame = {
 function startGame() {
   //limpando a tela
   myGame.clear();
-
+  document.getElementById("game-intro").style.display = "none";
   //desenhando o jogador
   myGame.player.draw();
+
+
 
   //desenhado/atualizando os vilões
   obstacle.updateObstacle();
@@ -84,7 +91,7 @@ function startGame() {
   myGame.showLives();
 
   //fazendo o jogo ficar mais dificil
-  if (myGame.frames % 600 === 0) {
+  if (myGame.frames % 450 === 0) {
     myGame.speed += 0.5;
   }
 }
@@ -107,11 +114,9 @@ function checkGameOver() {
   if (crashed) {
     myGame.lives -= 1;
     if (myGame.lives === 0) {
-      
       myGame.stop = true;
       myGame.audio.pause();
-      
-      alert("Morri");
+      document.getElementById("stop-game").style.display = "flex";
     } else {
       myGame.stop = false;
     }

@@ -17,13 +17,29 @@
     <script type="text/javascript" src="src/scripts/scripts.js" defer></script>
   </head>
   <body>
-    <div class="game-intro">
-      <button id="start-button">StartGame</button>
+    <div class="game-intro" id="game-intro">
+      <img src="/src/imgs/logo.png" alt="" />
+      <button id="start-button" class="start-button">Start Game</button>
+      <div id="help">
+        <span>How to play?<br />Use arrow keys</span>
+        
+        <img src="/src/imgs/pngwing.com.png" alt="" />
+        
+      </div>
+     
     </div>
 
     <div id="game-board">
-      <canvas id="canvas" width="500" height="500"></canvas>
+      <canvas id="canvas"></canvas>
     </div>
-    
+
+    <div id="stop-game">
+      <img src="/src/imgs/dead.png" alt="" srcset="" />
+      <span>Your &nbsp; watch &nbsp; has &nbsp; ended!</span>
+      <button id="reload-game" class="start-button" onclick="myReload()">
+        New Game
+      </button>
+    </div>
+    <footer>CRIADO POR IURY FLORES (IRONHACK PROJECT MODULE 1)</footer>
   </body>
 </html>

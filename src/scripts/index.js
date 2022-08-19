@@ -15,6 +15,7 @@ document.addEventListener("keydown", (e) => {
       } else {
         myGame.player.x += jump;
       }
+
       break;
     case "ArrowUp":
       if (myGame.player.y - jump <= 0) {
@@ -24,7 +25,10 @@ document.addEventListener("keydown", (e) => {
       }
       break;
     case "ArrowDown":
-      if (myGame.player.y + myGame.player.height >= myGame.canvas.height) {
+      if (
+        myGame.player.y + myGame.player.height + jump >=
+        myGame.canvas.height
+      ) {
         myGame.player.y = myGame.canvas.height - myGame.player.height;
       } else {
         myGame.player.y += jump;
@@ -35,6 +39,21 @@ document.addEventListener("keydown", (e) => {
 
 window.onload = () => {
   document.getElementById("start-button").onclick = () => {
+    document.getElementById("game-intro").style.display = "none";
     myGame.start();
   };
+
+  let reloading = sessionStorage.getItem("reloading");
+  if (reloading) {
+    sessionStorage.removeItem("reloading");
+
+    myGame.start();
+  }
 };
+function myReload() {
+  sessionStorage.setItem("reloading", true);
+
+  document.location.reload();
+}
+document.getElementById("stop-game").style.display = "none";
+document.getElementById("help").style.display = "flex";
