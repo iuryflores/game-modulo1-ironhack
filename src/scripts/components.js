@@ -6,7 +6,7 @@ class Component {
     this.height = height;
     this.personagemImg = personagemImg;
     const livesImg = new Image();
-    livesImg.src = "./src/imgs/live.png";
+    livesImg.src = "./imgs/live.png";
   }
 
   draw() {
