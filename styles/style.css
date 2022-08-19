@@ -1,91 +1,94 @@
 @font-face {
-  font-family: GameFont;
-  src: url("../src/fonts/Game of Thrones.ttf");
+    font-family: GameFont;
+    src: url("../src/fonts/Game of Thrones.ttf");
 }
 
 html,
 body {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: GameFont !important;
-  background-color: black;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: GameFont !important;
+    background-color: black;
 }
+
 #game-board {
-  border: 2px solid rgb(0, 225, 255);
-  box-shadow: 0 0 12px rgb(0, 225, 255);
-  border-radius: 10px;
-  width: 800px;
-  height: 500px;
-  margin: 0 auto;
-  background: url("../src/imgs/back.gif");
-  background-size: cover;
+    border: 2px solid rgb(0, 225, 255);
+    box-shadow: 0 0 12px rgb(0, 225, 255);
+    border-radius: 10px;
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    background: url("../src/imgs/back.gif");
+    background-size: cover;
 }
 
 .start-button {
-  margin: 0 0 15px 0;
-
-  text-align: center;
-  padding: 10px;
-
-  font-family: GameFont !important;
-  font-size: 20px;
+    margin: 0 0 15px 0;
+    text-align: center;
+    padding: 10px;
+    font-family: GameFont !important;
+    font-size: 20px;
 }
+
 #stop-game {
-  border: 2px solid #111;
-  width: 550px;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 1);
-  color: white;
-  text-align: center;
-  padding: 20px;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    border: 2px solid #111;
+    width: 550px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #stop-game img {
-  width: 80%;
+    width: 60%;
 }
-.game-intro {
-  position: absolute;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: white;
-  text-align: center;
-  padding: 20px;
-  width: 800px;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-.game-intro img {
-  width: 70%;
-}
-#help {
-  width: 500px;
-justify-items: center;
-  font-size: 10PX;
-  flex-direction: row;
- justify-content: space-evenly;
-  margin-left: 20px;
-  align-items: center;
-}
-#help img {
-  width: 80px;
-  margin-bottom: 10px ;
-}
-footer {
 
-  
-  color: azure;
-  font-family: 'Courier New', Courier, monospace;
+.game-intro {
+    position: absolute;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 800px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.game-intro img {
+    width: 70%;
+}
+
+#help {
+    width: 500px;
+    justify-items: center;
+    font-size: 10PX;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-left: 20px;
+    align-items: center;
+}
+
+#help img {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+footer {
+    color: azure;
+    font-family: 'Courier New', Courier, monospace;
 }
